@@ -31,3 +31,37 @@ If you want to collaborate with it, please add a PR to the repo. Thanks!
 If you want to have a look at this project on Cypress Dashboard please visit the following link:
 
 https://dashboard.cypress.io/projects/iyhpy5/
+
+## QaJenkins + Xray
+
+
+
+```
+        stage('XRay') {
+            when { 
+                expression {
+                    return params.RESULTS_TO_XRAY
+                }
+            }
+            steps {
+                step([
+                    $class: 'XrayImportBuilder',
+                    endpointName: '/junit',
+                    importFilePath: 'cypress/results/test-results-*.xml',
+                    importToSameExecution: 'true',
+                    projectKey: 'AS',
+                    testPlanKey: 'AS-4401',
+                    serverInstance: 'CLOUD-cb9a5332-2ec6-4e45-b5da-79bf84ed2588',
+                    testEnvironments: 'AutoStats' + env.ENV.capitalize()
+                ])
+            }
+        }
+
+```
+## Prerequisites
+
+% nvm i --lts
+Installing latest LTS version.
+v18.16.0 is already installed.
+Now using node v18.16.0 (npm v9.5.1)
+

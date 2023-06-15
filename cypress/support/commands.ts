@@ -10,5 +10,6 @@
 //
 //
 /* global Cypress, cy */
-const env = Cypress.env();
-import 'cypress-xpath';
+const env = Cypress.env()
+import 'cypress-wait-until'
+import 'cypress-xpath'

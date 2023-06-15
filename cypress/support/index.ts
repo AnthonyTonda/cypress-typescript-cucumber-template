@@ -19,6 +19,7 @@
 import './commands';
 import '@bahmutov/cy-api/support';
 import '@testing-library/cypress/add-commands';
+import 'cypress-wait-until';
 import 'pretty-console-colors';
 
 // Alternatively you can use CommonJS syntax:
